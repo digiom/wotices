@@ -1,23 +1,13 @@
-<?php
-/**
- * Namespace
- */
-namespace Digiom\WordPress\Notices\Types;
+<?php namespace Digiom\Wotices\Types;
 
-/**
- * Only WordPress
- */
 defined('ABSPATH') || exit;
 
-/**
- * Dependencies
- */
-use Digiom\WordPress\Notices\Abstracts\NoticeAbstract;
+use Digiom\Wotices\Abstracts\NoticeAbstract;
 
 /**
  * Class InfoNotice
  *
- * @package Digiom\WordPress\Notices\Types
+ * @package Digiom\Wotices\Types
  */
 class InfoNotice extends NoticeAbstract
 {

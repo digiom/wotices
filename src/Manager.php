@@ -275,13 +275,14 @@ class Manager implements ManagerInterface, Countable, IteratorAggregate
 	 * @param array $args
 	 *
 	 * @return bool
+	 * @throws Exception
 	 */
 	public function create($args = [])
 	{
 		$defaultArgs =
 		[
 			'prefix' => '',
-			'id' => mt_rand(3, 500),
+			'id' => random_int(3, 500),
 			'type' => 'info',
 			'data' => '',
 			'extra_data' => '',
@@ -584,7 +585,7 @@ class Manager implements ManagerInterface, Countable, IteratorAggregate
 	 *
 	 * @param string $key
 	 */
-	public function remove($key)
+	public function remove(string $key)
 	{
 		if($this->has($key))
 		{
@@ -645,7 +646,7 @@ class Manager implements ManagerInterface, Countable, IteratorAggregate
 	/**
 	 * @return bool
 	 */
-	public function isUseAdminNotices()
+	public function isUseAdminNotices(): bool
 	{
 		return $this->use_admin_notices;
 	}
@@ -653,7 +654,7 @@ class Manager implements ManagerInterface, Countable, IteratorAggregate
 	/**
 	 * @param bool $use_admin_notices
 	 */
-	public function setUseAdminNotices($use_admin_notices)
+	public function setUseAdminNotices(bool $use_admin_notices)
 	{
 		$this->use_admin_notices = $use_admin_notices;
 	}
@@ -661,7 +662,7 @@ class Manager implements ManagerInterface, Countable, IteratorAggregate
 	/**
 	 * @return bool
 	 */
-	public function isUseAllAdminNotices()
+	public function isUseAllAdminNotices(): bool
 	{
 		return $this->use_all_admin_notices;
 	}
@@ -669,7 +670,7 @@ class Manager implements ManagerInterface, Countable, IteratorAggregate
 	/**
 	 * @param bool $use_all_admin_notices
 	 */
-	public function setUseAllAdminNotices($use_all_admin_notices)
+	public function setUseAllAdminNotices(bool $use_all_admin_notices)
 	{
 		$this->use_all_admin_notices = $use_all_admin_notices;
 	}
@@ -677,7 +678,7 @@ class Manager implements ManagerInterface, Countable, IteratorAggregate
 	/**
 	 * @return bool
 	 */
-	public function isUseNetworkAdminNotices()
+	public function isUseNetworkAdminNotices(): bool
 	{
 		return $this->use_network_admin_notices;
 	}
@@ -685,7 +686,7 @@ class Manager implements ManagerInterface, Countable, IteratorAggregate
 	/**
 	 * @param bool $use_network_admin_notices
 	 */
-	public function setUseNetworkAdminNotices($use_network_admin_notices)
+	public function setUseNetworkAdminNotices(bool $use_network_admin_notices)
 	{
 		$this->use_network_admin_notices = $use_network_admin_notices;
 	}
@@ -693,7 +694,7 @@ class Manager implements ManagerInterface, Countable, IteratorAggregate
 	/**
 	 * @return bool
 	 */
-	public function isUseUserAdminNotices()
+	public function isUseUserAdminNotices(): bool
 	{
 		return $this->use_user_admin_notices;
 	}
@@ -701,7 +702,7 @@ class Manager implements ManagerInterface, Countable, IteratorAggregate
 	/**
 	 * @param bool $use_user_admin_notices
 	 */
-	public function setUseUserAdminNotices($use_user_admin_notices)
+	public function setUseUserAdminNotices(bool $use_user_admin_notices)
 	{
 		$this->use_user_admin_notices = $use_user_admin_notices;
 	}
@@ -715,7 +716,7 @@ class Manager implements ManagerInterface, Countable, IteratorAggregate
 	 * @return true
 	 * @throws Exception
 	 */
-	public function registerType($name, $class)
+	public function registerType(string $name, $class): bool
 	{
 		if(empty($name))
 		{
@@ -742,7 +743,7 @@ class Manager implements ManagerInterface, Countable, IteratorAggregate
 	 *
 	 * @return bool
 	 */
-	public function save()
+	public function save(): bool
 	{
 		if($this->count())
 		{
@@ -765,7 +766,7 @@ class Manager implements ManagerInterface, Countable, IteratorAggregate
 	 *
 	 * @return bool
 	 */
-	public function delete()
+	public function delete(): bool
 	{
 		return delete_transient($this->getTransientName());
 	}
@@ -806,7 +807,7 @@ class Manager implements ManagerInterface, Countable, IteratorAggregate
 	 *
 	 * @return ArrayIterator
 	 */
-	public function getIterator()
+	public function getIterator(): ArrayIterator
 	{
 		return new ArrayIterator($this->notices);
 	}

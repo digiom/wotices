@@ -7,6 +7,7 @@ use IteratorAggregate;
 use Countable;
 use Exception;
 use InvalidArgumentException;
+use Traversable;
 use WP_Screen;
 use WP_User;
 use Digiom\Wotices\Abstracts\NoticeAbstract;
@@ -786,7 +787,7 @@ class Manager implements ManagerInterface, Countable, IteratorAggregate
 	/**
 	 * Count number of notices in the queue
 	 */
-	public function count()
+	public function count(): int
 	{
 		return count($this->notices);
 	}
@@ -807,7 +808,7 @@ class Manager implements ManagerInterface, Countable, IteratorAggregate
 	 *
 	 * @return ArrayIterator
 	 */
-	public function getIterator(): ArrayIterator
+	public function getIterator(): Traversable
 	{
 		return new ArrayIterator($this->notices);
 	}
